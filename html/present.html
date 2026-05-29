@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang = "vi">
+	<head>
+		<title>Trang cơ bản</title>
+		<!--<link rel = "stylesheet" href = "../css/style6.css">-->
+        <!-- Latest compiled and minified CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <meta charset = "utf-8">
+        <script src="../js/lib1.js"></script>
+	</head>
+    <body class="bg-light">
+    <div class="container my-5" style="max-width: 900px;">
+        <!-- Nút quay lại -->
+         <div class="mb-4">
+            <a href="../html/homepage.html" class="btn btn-outline-secondary btn-sm">-> Back to Homepage</a>
+         </div>
+
+         <!-- khung chứa nội dung chi tiết sản phẩm -->
+         <div class="card shadow-sm p-4 bg-white">
+            <div class="row g-4 align-items-start">
+                <!-- cột bên trái: ảnh sản phẩm (chiếm 5/12 cột trên màn hình lớn) -->
+                 <div class="col-md-5">
+                    <img id="p-image" src="DU_LIEU_SAN_PHAM_TAI_DAY" alt="Theme Description" class="img-fluid rounded w-100">
+                 </div>
+
+                <!-- cột bên phải: thông tin sản phẩm (chiếm 7/12 cột trên màn hình lớn) -->
+                 <div class="col-md-7">
+                    <!-- Tên sản phẩm -->
+                     <h1 id="p-name" class="h2 fw-bold text-dark mb-3">Name</h1>
+
+                    <!-- Giá sản phẩm -->
+                     <h2 id="p-price" class="h4 text-danger fw-semibold mb-4">Price</h2>
+                     
+                    <!-- Mô tả sản phẩm: canh đều (text-justify), giãn dòng 1.5 (lh-base) -->
+                     <h3 class="h6 fw-bold text-secondary text-uppercase mb-2">Description</h3>
+                     <p id="p-description" class="text-muted lh-base" style="text-align: justify;">
+                       content
+                     </p>
+
+                     <h3 class="h6 fw-bold text-secondary text-uppercase mb-2">Detail</h3>
+                     <p id="p-detail" class="text-muted lh-base" style="text-align: justify;">content
+                     </p>
+                 </div>
+            </div>
+        </div>
+      <div>
+         <button class="btn btn-dark w-100 mt-3" onclick =" alert ('Thank you for your choosing!')"> Book This Room</button>
+      </div>
+    </div>
+    <script>
+        //1. Lấy ID từ URL bằng URLSearchParms
+        const urlParams= new URLSearchParams(window.location.search);
+        const productId= urlParams.get("id"); //Kết quả là kiểu String (VD: "3")
+
+        //2. Dùng find để tìm đối tượng. Cần ép kiểu productId về number bằng Number() hoặc dấu +
+        const product= productlist.find(function(p) {
+            return p.id === productId;
+        });
+
+        //3. Truy xuất các trường dữ liệu khi đối tượng tồn tại
+        if (product) {
+            document.getElementById("p-image").src= product.image;
+            document.getElementById("p-name").innerHTML= product.name;
+            document.getElementById("p-price").innerHTML= "Price/Hour: " + product.price.toLocaleString("vi-VN") + ".000 VND";
+            document.getElementById("p-description").innerHTML= product.desc;
+            document.getElementById("p-detail").innerHTML= product.detail;
+        }
+    </script>
+</body>
+</html>
